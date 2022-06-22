@@ -90,6 +90,7 @@ class GenerativeImage:
     def plot(
             self,
             color=None,
+            color_function=None,
             bgcolor=None,
             spot_size=None,
             size=None,
@@ -101,6 +102,8 @@ class GenerativeImage:
 
         :param color: point colors
         :type color: str
+        :param color_function: color indicator function
+        :type color_function: python or lambda function
         :param bgcolor: background color
         :type bgcolor: str
         :param spot_size: point spot size
