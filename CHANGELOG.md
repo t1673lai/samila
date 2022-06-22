@@ -6,6 +6,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/spec/v2.0.0.
 
 ## [Unreleased]
 ### Changed
+- `color_function` parameter added to `plot` method
 - Random mode modified
 - Test system modified
 - `generate` method optimized
