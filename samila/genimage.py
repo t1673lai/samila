@@ -121,6 +121,7 @@ class GenerativeImage:
         plot_params_filter(
             self,
             color,
+            color_function,
             bgcolor,
             spot_size,
             size,
@@ -131,11 +132,14 @@ class GenerativeImage:
         fig.set_size_inches(self.size[0], self.size[1])
         ax = fig.add_subplot(111, projection=self.projection)
         set_background(self.bgcolor, fig, ax)
+        colors = self.color
+        if self.color_function is not None:
+            colors = list(map(self.color_function, self.data1, self.data2))
         ax.scatter(
             self.data2,
             self.data1,
             alpha=self.alpha,
-            c=self.color,
+            c=colors,
             s=self.spot_size,
             lw=self.linewidth)
         ax.set_axis_off()

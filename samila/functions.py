@@ -261,6 +261,7 @@ def filter_size(size):
 def plot_params_filter(
         g,
         color=None,
+        color_function=None,
         bgcolor=None,
         spot_size=None,
         size=None,
@@ -274,6 +275,8 @@ def plot_params_filter(
     :type g: GenerativeImage
     :param color: point colors
     :type color: str
+    :param color_function: color indicator function
+    :type color_function: python or lambda function
     :param bgcolor: background color
     :type bgcolor: str
     :param spot_size: point spot size
@@ -300,6 +303,8 @@ def plot_params_filter(
     size = filter_size(size)
     if color is None:
         color = g.color
+    if color_function is None:
+        color_function = g.color_function
     if bgcolor is None:
         bgcolor = g.bgcolor
     if spot_size is None:
@@ -312,7 +317,7 @@ def plot_params_filter(
         alpha = g.alpha
     if linewidth is None:
         linewidth = g.linewidth
-    g.color, g.bgcolor, g.spot_size, g.size, g.projection, g.alpha, g.linewidth = color, bgcolor, spot_size, size, projection, alpha, linewidth
+    g.color, g.color_function, g.bgcolor, g.spot_size, g.size, g.projection, g.alpha, g.linewidth = color, color_function, bgcolor, spot_size, size, projection, alpha, linewidth
 
 
 def generate_params_filter(
@@ -409,6 +414,7 @@ def _GI_initializer(g, function1, function2):
     g.data1 = None
     g.data2 = None
     g.color = DEFAULT_COLOR
+    g.color_function = None
     g.bgcolor = DEFAULT_BACKGROUND_COLOR
     g.spot_size = DEFAULT_SPOT_SIZE
     g.size = DEFAULT_IMAGE_SIZE
